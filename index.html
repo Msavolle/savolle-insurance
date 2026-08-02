@@ -109,6 +109,7 @@
         transition: transform 0.15s ease, background 0.15s ease;
     }
     .nav-cta:hover { background: var(--pine-mid); transform: translateY(-1px); }
+    .nav-cta-mobile { display: none; }
 
     /* ---------- hero ---------- */
     .hero { padding: 72px 0 84px; position: relative; overflow: hidden; }
@@ -143,9 +144,9 @@
 
     /* ---------- form card ---------- */
     .broker-card { display: flex; align-items: center; gap: 16px; margin-top: 28px; padding: 16px 18px; background: var(--white); border: 1px solid var(--tint-line); border-radius: 14px; box-shadow: var(--shadow-soft); max-width: 430px; }
-    .broker-photo { position: relative; width: 66px; height: 66px; flex-shrink: 0; }
-    .broker-photo img { width: 66px; height: 66px; border-radius: 50%; object-fit: cover; display: block; border: 2px solid var(--tint); }
-    .broker-initials { width: 66px; height: 66px; border-radius: 50%; background: var(--pine); color: #fff; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; align-items: center; justify-content: center; }
+    .broker-photo { position: relative; width: 64px; height: 64px; flex-shrink: 0; }
+    .broker-photo img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; box-shadow: inset 0 0 0 2px rgba(224,160,58,0.6); }
+    .broker-initials { width: 64px; height: 64px; border-radius: 50%; background: var(--pine); color: #fff; font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; letter-spacing: 1.5px; align-items: center; justify-content: center; box-shadow: inset 0 0 0 2px rgba(224,160,58,0.6); }
     .broker-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--pine); line-height: 1.1; }
     .broker-role { font-size: 11px; color: var(--gold-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 3px 0 5px; }
     .broker-line { font-size: 13px; color: var(--ink-soft); line-height: 1.42; }
@@ -243,6 +244,7 @@
     }
     .btn-next:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
     .btn-next:disabled { opacity: 0.65; cursor: default; }
+    .start-btn { font-size: 16px; padding: 16px; margin-top: 2px; }
     .step-err { font-size: 13px; color: #C0392B; margin-top: 10px; }
     @media (prefers-reduced-motion: reduce) { .fstep.active { animation: none; } }
 
@@ -349,6 +351,11 @@
     .js-reveal.in { opacity: 1; transform: none; }
 
     /* ---------- motion ---------- */
+    .quote-pulse { animation: quotePulse 0.9s ease-out; }
+    @keyframes quotePulse {
+        0% { box-shadow: 0 0 0 0 rgba(224,160,58,0.55), var(--shadow); }
+        100% { box-shadow: 0 0 0 16px rgba(224,160,58,0), var(--shadow); }
+    }
     .rise { opacity: 0; transform: translateY(16px); animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .rise.d1 { animation-delay: 0.08s; }
     .rise.d2 { animation-delay: 0.16s; }
@@ -369,6 +376,7 @@
         .steps, .why-grid { grid-template-columns: 1fr; gap: 18px; }
         .cover-grid { grid-template-columns: 1fr; }
         .nav-note { display: none; }
+        .nav-cta-mobile { display: inline-flex; align-items: center; }
         .why { padding: 44px 26px; }
         .section { padding: 60px 0; }
     }
@@ -387,7 +395,7 @@
         <div class="logo"><span class="logo-mark"></span> Savolle Insurance</div>
         <div class="nav-right">
             <span class="nav-note">Licensed broker · Health &amp; Life</span>
-            <a href="#quote" class="nav-cta">Get a free quote</a>
+            <a href="#quote" class="nav-cta nav-cta-mobile">Get a free quote</a>
         </div>
     </div>
 </nav>
@@ -404,10 +412,13 @@
                 for you.</h1>
             <p class="hero-sub rise d2">You tell me what you need. I do the shopping, compare the plans across carriers, and find you coverage that actually fits your life and budget. Free to you — I&rsquo;m paid by the carriers, not by you.</p>
             <div class="hero-cta-row rise d3">
-                <a href="#quote" class="btn-primary">Get my free quote</a>
                 <span class="hero-trust">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.5-3 8-7 11-4-3-7-6.5-7-11V5l7-3z" stroke="#2F6B4E" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#2F6B4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Licensed &amp; independent
+                </span>
+                <span class="hero-trust">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2F6B4E" stroke-width="1.8"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#2F6B4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    No cost to you, ever
                 </span>
             </div>
 
@@ -432,13 +443,17 @@
         <div class="form-card rise d2" id="quote">
             <div id="form-live">
                 <h3>Get your free quote</h3>
-                <p class="fc-sub">Takes 30 seconds. I&rsquo;ll reach out to find your best options.</p>
-                <div class="privacy-badge">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#103D2C" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#103D2C" stroke-width="1.7"/><circle cx="12" cy="15.5" r="1.4" fill="#E0A03A"/></svg>
-                    <span><b>Your info stays with me.</b> I never sell it or hand it to other agents &mdash; so you won&rsquo;t get bombarded with calls from other insurance companies.</span>
+                <div id="quote-intro">
+                    <p class="fc-sub">Answer 5 quick questions &mdash; about 30 seconds &mdash; and I&rsquo;ll personally find your best options.</p>
+                    <div class="privacy-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#103D2C" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#103D2C" stroke-width="1.7"/><circle cx="12" cy="15.5" r="1.4" fill="#E0A03A"/></svg>
+                        <span><b>Your info stays with me.</b> I never sell it or hand it to other agents &mdash; so you won&rsquo;t get bombarded with calls from other insurance companies.</span>
+                    </div>
+                    <button type="button" class="btn-next start-btn" onclick="startQuote()">Get my free quote</button>
+                    <p class="form-foot" style="margin-top:12px;">Free &amp; no obligation &middot; just 5 quick questions</p>
                 </div>
 
-                <form id="lead-form" novalidate>
+                <form id="lead-form" novalidate style="display:none;">
                     <div class="steps-bar"><span class="sb-fill" id="sb-fill"></span></div>
                     <div class="steps-count" id="steps-count">Step 1 of 5</div>
 
@@ -546,30 +561,31 @@
 </header>
 
 <!-- ============ TRUST STRIP ============
-     FILL THESE WITH YOUR REAL NUMBERS before going live.
-     Do NOT display figures you can't back up: as a licensed agent, false or misleading
-     advertising is a regulatory violation, and the FTC now bans fake reviews/testimonials.
-     - "families helped": your real client count (or remove until you can back it up)
-     - "carriers": the real number of carriers you're appointed with
-     - "response time": your honest average (you can genuinely win on this)
-     - stars: wire to your REAL Google review rating once you're collecting reviews -->
+     These four are all TRUE and safe to show:
+     - "15+ carriers" is your real appointment count
+     - "$0 cost to you" is true (you're paid by carriers)
+     - "Under 10 min response" — adjust the number to whatever you'll HONESTLY hit
+       (under 15 min, same day, etc.). Only claim what's true.
+     - "100% independent" is true (you're not captive to one carrier)
+     Removed the "families helped" count and star rating until you can back them with
+     real numbers and real Google reviews. Add them back then. -->
 <section class="trust-strip-wrap">
     <div class="wrap trust-strip">
-        <div class="trust-stat">
-            <div class="ts-num"><span data-count="600" data-suffix="+">0</span></div>
-            <div class="ts-label">Families helped</div>
-        </div>
         <div class="trust-stat">
             <div class="ts-num"><span data-count="15" data-suffix="+">0</span></div>
             <div class="ts-label">Insurance carriers</div>
         </div>
         <div class="trust-stat">
-            <div class="ts-num">Under <span data-count="10">0</span> min</div>
-            <div class="ts-label">Average response</div>
+            <div class="ts-num">$0</div>
+            <div class="ts-label">Cost to you, ever</div>
         </div>
         <div class="trust-stat">
-            <div class="ts-num ts-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="ts-label">From real client reviews</div>
+            <div class="ts-num">Under <span data-count="10">0</span> min</div>
+            <div class="ts-label">Typical response</div>
+        </div>
+        <div class="trust-stat">
+            <div class="ts-num"><span data-count="100" data-suffix="%">0</span></div>
+            <div class="ts-label">Independent</div>
         </div>
     </div>
 </section>
@@ -699,7 +715,7 @@
         </div>
         <!-- LICENSE-NUMBER: put your real license number in the disclaimer below -->
         <p class="disclaimer">
-            Savolle Insurance is an independent insurance brokerage operated by a licensed insurance agent (License #: __________). We do not underwrite insurance; coverage is provided by the insurance carriers. Submitting a quote request does not bind coverage or create an obligation to purchase. Not affiliated with or endorsed by any government agency. Product availability varies by state. This site is for general information and lead requests only and is not an offer of insurance in any state where the agent is not licensed. &copy; <span id="yr"></span> Savolle Insurance. All rights reserved.
+            Savolle Insurance is an independent insurance brokerage operated by a licensed insurance agent (National Producer Number: 21433622). We do not underwrite insurance; coverage is provided by the insurance carriers. Submitting a quote request does not bind coverage or create an obligation to purchase. Not affiliated with or endorsed by any government agency. Product availability varies by state. This site is for general information and lead requests only and is not an offer of insurance in any state where the agent is not licensed. &copy; <span id="yr"></span> Savolle Insurance. All rights reserved.
         </p>
     </div>
 </footer>
@@ -751,6 +767,15 @@
         if (firstInput) { setTimeout(function () { try { firstInput.focus(); } catch (e) {} }, 120); }
     }
     function stepGo(n) { showStep(n); }
+    function startQuote() {
+        var intro = document.getElementById('quote-intro');
+        var form = document.getElementById('lead-form');
+        if (intro && intro.style.display !== 'none') {
+            intro.style.display = 'none';
+            if (form) form.style.display = 'block';
+            showStep(1);
+        }
+    }
     function stepNext(fromStep) {
         if (fromStep === 2) {
             var zip = val('lf-zip');
@@ -770,7 +795,7 @@
         setTimeout(function () { if (currentStep < TOTAL_STEPS) showStep(currentStep + 1); }, 190);
     }
     // expose for inline onclick
-    window.stepGo = stepGo; window.stepNext = stepNext; window.choosePick = choosePick;
+    window.stepGo = stepGo; window.stepNext = stepNext; window.choosePick = choosePick; window.startQuote = startQuote;
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -936,6 +961,31 @@
         });
     }, { threshold: 0.2 });
     fadeTargets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+<!-- Make every "quote" button give feedback: scroll to the form AND pulse it (so on desktop,
+     where the form is already visible, clicking still visibly does something). -->
+<script>
+function goToQuote() {
+    var el = document.getElementById('quote');
+    if (!el) return;
+    if (window.startQuote) window.startQuote();
+    try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { try { el.scrollIntoView(); } catch (e2) {} }
+    el.classList.remove('quote-pulse');
+    void el.offsetWidth;
+    el.classList.add('quote-pulse');
+    // also nudge focus to the first choice so it's obvious the form is "active"
+    try {
+        var first = el.querySelector('.choice');
+        if (first) setTimeout(function () { try { first.focus(); } catch (e) {} }, 400);
+    } catch (e) {}
+}
+(function () {
+    var links = document.querySelectorAll('a[href="#quote"]');
+    links.forEach(function (a) {
+        a.addEventListener('click', function (e) { e.preventDefault(); goToQuote(); });
+    });
 })();
 </script>
 
