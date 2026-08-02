@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savolle Insurance — Health & Life Coverage, Handled for You</title>
+<meta name="description" content="A licensed broker who does the shopping for you. Compare health and life insurance plans and get coverage that fits — at no cost to you. Get a free quote.">
+
+<!-- SEO: structured data so Google understands who/where you are. Edit the fields to match
+     your real details (name, phone, city, license, service areas). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "Savolle Insurance",
+  "description": "Independent health and life insurance brokerage helping individuals and families find coverage that fits, at no cost to the client.",
+  "telephone": "+1-239-249-1333",
+  "email": "msavollemedahealth@gmail.com",
+  "areaServed": "US",
+  "address": { "@type": "PostalAddress", "addressLocality": "Tampa", "addressRegion": "FL", "addressCountry": "US" },
+  "priceRange": "Free consultation",
+  "knowsAbout": ["Health insurance", "Life insurance", "Individual health plans", "Term life insurance"]
+}
+</script>
+
+<!-- ============================================================================
+     HOW TO MAKE THIS LIVE + CHANGE THINGS (plain-English guide):
+
+     1) RENAME THE BUSINESS: search this file for  Savolle Insurance  and replace every
+        one with whatever you want the brand to be called.
+
+     2) YOUR CONTACT INFO: search for  CONTACT-INFO  below and edit the phone,
+        email, and address to what you want shown publicly.
+
+     3) WHERE LEADS GO: when someone fills out the form, it emails the lead to
+        you using the SAME EmailJS setup your app already uses. The settings are
+        in the  LEAD_CONFIG  block in the script near the bottom. They're already
+        filled in with your account. You can change the "to" address there.
+
+     4) YOUR LICENSE #: search for  LICENSE-NUMBER  and put your real license
+        number in (many states require it on insurance marketing).
+
+     5) TO PUBLISH: rename this file to  index.html , put it in a NEW GitHub repo
+        (not your app's repo), and deploy it on Vercel — same steps as your app.
+        A real domain (like marxibleinsurance.com) is worth buying for trust.
+============================================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg: #FBFAF6;
+        --ink: #16211C;
+        --ink-soft: #4A5A52;
+        --pine: #103D2C;
+        --pine-mid: #2F6B4E;
+        --tint: #E9F0EA;
+        --tint-line: rgba(16, 61, 44, 0.12);
+        --gold: #E0A03A;
+        --gold-dark: #C6892C;
+        --white: #FFFFFF;
+        --radius: 16px;
+        --shadow: 0 18px 50px -18px rgba(16, 61, 44, 0.28);
+        --shadow-soft: 0 6px 24px -12px rgba(16, 61, 44, 0.22);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; }
+
+    a { color: inherit; }
+
+    /* ---------- nav ---------- */
+    nav {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(251, 250, 246, 0.85);
+        backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--tint-line);
+    }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--pine); display: flex; align-items: center; gap: 9px; letter-spacing: -0.02em; }
+    .logo-mark {
+        width: 26px; height: 26px; border-radius: 8px;
+        background: var(--pine); position: relative; flex-shrink: 0;
+    }
+    .logo-mark::after {
+        content: ''; position: absolute; inset: 6px;
+        border: 2px solid var(--gold); border-radius: 3px; border-bottom: none; border-right: none;
+    }
+    .nav-right { display: flex; align-items: center; gap: 22px; }
+    .nav-note { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+    .nav-cta {
+        background: var(--pine); color: var(--white); text-decoration: none;
+        padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .nav-cta:hover { background: var(--pine-mid); transform: translateY(-1px); }
+
+    /* ---------- hero ---------- */
+    .hero { padding: 72px 0 84px; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+
+    .eyebrow {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+        color: var(--pine-mid); background: var(--tint);
+        padding: 6px 13px; border-radius: 999px; margin-bottom: 22px;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+
+    .hero h1 { font-size: clamp(38px, 5.4vw, 60px); color: var(--pine); margin-bottom: 20px; }
+    .hero h1 .mark-word { position: relative; white-space: nowrap; }
+    .hero h1 .mark-word svg { position: absolute; left: 0; right: 0; bottom: -10px; width: 100%; height: 14px; }
+
+    .hero-sub { font-size: 18px; color: var(--ink-soft); max-width: 480px; margin-bottom: 30px; }
+
+    .hero-cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .btn-primary {
+        background: var(--gold); color: #3A2A08; text-decoration: none;
+        padding: 15px 28px; border-radius: 999px; font-size: 16px; font-weight: 700;
+        border: none; cursor: pointer; font-family: inherit;
+        box-shadow: 0 10px 26px -10px rgba(224, 160, 58, 0.7);
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 14px 32px -10px rgba(224, 160, 58, 0.75); }
+
+    .hero-trust { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
+    .hero-trust svg { flex-shrink: 0; }
+
+    /* ---------- form card ---------- */
+    .broker-card { display: flex; align-items: center; gap: 16px; margin-top: 28px; padding: 16px 18px; background: var(--white); border: 1px solid var(--tint-line); border-radius: 14px; box-shadow: var(--shadow-soft); max-width: 430px; }
+    .broker-photo { position: relative; width: 66px; height: 66px; flex-shrink: 0; }
+    .broker-photo img { width: 66px; height: 66px; border-radius: 50%; object-fit: cover; display: block; border: 2px solid var(--tint); }
+    .broker-initials { width: 66px; height: 66px; border-radius: 50%; background: var(--pine); color: #fff; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; align-items: center; justify-content: center; }
+    .broker-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--pine); line-height: 1.1; }
+    .broker-role { font-size: 11px; color: var(--gold-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 3px 0 5px; }
+    .broker-line { font-size: 13px; color: var(--ink-soft); line-height: 1.42; }
+    .form-card {
+        background: var(--white); border-radius: var(--radius);
+        box-shadow: var(--shadow); border: 1px solid var(--tint-line);
+        padding: 30px; position: relative;
+    }
+    .form-card::before {
+        content: ''; position: absolute; top: -1px; left: 26px; right: 26px; height: 3px;
+        background: var(--gold); border-radius: 0 0 3px 3px;
+    }
+    .form-card h3 { font-size: 23px; color: var(--pine); margin-bottom: 4px; }
+    .form-card .fc-sub { font-size: 14px; color: var(--ink-soft); margin-bottom: 22px; }
+
+    .field { margin-bottom: 15px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+        width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit;
+        border: 1.5px solid var(--tint-line); border-radius: 10px; background: #FCFCFA;
+        color: var(--ink); transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+        outline: none; border-color: var(--pine-mid); box-shadow: 0 0 0 3px rgba(47, 107, 78, 0.12);
+    }
+    .field textarea { resize: vertical; min-height: 70px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* segmented coverage choice */
+    .seg { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label {
+        text-align: center; padding: 11px 6px; border: 1.5px solid var(--tint-line);
+        border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+        color: var(--ink-soft); background: #FCFCFA; margin: 0;
+        transition: all 0.15s ease;
+    }
+    .seg input:checked + label { border-color: var(--pine); background: var(--tint); color: var(--pine); }
+
+    /* honeypot - hidden from humans */
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .consent { display: flex; gap: 10px; align-items: flex-start; margin: 18px 0 20px; }
+    .consent input { margin-top: 3px; width: 17px; height: 17px; flex-shrink: 0; cursor: pointer; accent-color: var(--pine); }
+    .consent label { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+    .consent a { color: var(--pine-mid); }
+
+    .submit-btn {
+        width: 100%; background: var(--gold); color: #3A2A08; border: none;
+        padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 700;
+        cursor: pointer; font-family: inherit;
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.65; cursor: default; }
+
+    .form-msg { font-size: 13px; margin-top: 12px; text-align: center; }
+    .form-msg.err { color: #C0392B; }
+
+    .form-foot { font-size: 11px; color: var(--ink-soft); text-align: center; margin-top: 14px; opacity: 0.85; }
+
+    /* multi-step form */
+    .privacy-badge { display: flex; align-items: flex-start; gap: 9px; background: var(--tint); border: 1px solid rgba(16,61,44,0.1); border-radius: 10px; padding: 11px 13px; margin-bottom: 20px; }
+    .privacy-badge svg { flex-shrink: 0; margin-top: 1px; }
+    .privacy-badge span { font-size: 12.5px; color: var(--pine); line-height: 1.45; font-weight: 500; }
+    .privacy-badge b { font-weight: 700; }
+    .steps-bar { height: 5px; background: var(--tint); border-radius: 999px; overflow: hidden; margin-bottom: 9px; }
+    .sb-fill { display: block; height: 100%; width: 20%; background: var(--gold); border-radius: 999px; transition: width 0.45s cubic-bezier(0.22,1,0.36,1); }
+    .steps-count { font-size: 11px; color: var(--ink-soft); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
+    .fstep { display: none; }
+    .fstep.active { display: block; animation: stepIn 0.45s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes stepIn { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+    .fstep-q { font-family: 'Fraunces', serif; font-size: 21px; color: var(--pine); font-weight: 600; margin-bottom: 18px; line-height: 1.2; }
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .choice-grid.choice-6 { grid-template-columns: 1fr 1fr 1fr; }
+    .choice {
+        padding: 20px 8px; border: 1.5px solid var(--tint-line); border-radius: 12px;
+        background: #FCFCFA; font-family: inherit; font-size: 15px; font-weight: 600;
+        color: var(--ink); cursor: pointer; text-align: center;
+        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .choice:hover { border-color: var(--pine-mid); transform: translateY(-2px); }
+    .choice.sel { border-color: var(--pine); background: var(--tint); color: var(--pine); }
+    .fstep-nav { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-back {
+        background: transparent; border: 1.5px solid var(--tint-line); color: var(--ink-soft);
+        padding: 13px 20px; border-radius: 10px; font-family: inherit; font-weight: 600;
+        font-size: 14px; cursor: pointer; transition: border-color 0.15s ease;
+    }
+    .btn-back:hover { border-color: var(--pine-mid); }
+    .btn-next {
+        flex: 1; background: var(--gold); color: #3A2A08; border: none;
+        padding: 14px; border-radius: 10px; font-family: inherit; font-weight: 700;
+        font-size: 15px; cursor: pointer; transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn-next:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
+    .btn-next:disabled { opacity: 0.65; cursor: default; }
+    .step-err { font-size: 13px; color: #C0392B; margin-top: 10px; }
+    @media (prefers-reduced-motion: reduce) { .fstep.active { animation: none; } }
+
+    /* success state */
+    .thanks { text-align: center; padding: 20px 6px; }
+    .thanks .check {
+        width: 62px; height: 62px; border-radius: 50%; background: var(--tint);
+        display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    }
+    .thanks h3 { font-size: 25px; color: var(--pine); margin-bottom: 10px; }
+    .thanks p { font-size: 15px; color: var(--ink-soft); max-width: 320px; margin: 0 auto; }
+
+    /* ---------- section shell ---------- */
+    .section { padding: 84px 0; }
+    .section-head { text-align: center; max-width: 620px; margin: 0 auto 52px; }
+    .section-head .eyebrow { margin-bottom: 16px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 42px); color: var(--pine); margin-bottom: 14px; }
+    .section-head p { font-size: 17px; color: var(--ink-soft); }
+
+    /* ---------- how it works ---------- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .step { position: relative; padding: 30px 26px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--tint-line); box-shadow: var(--shadow-soft); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -16px rgba(16, 61, 44, 0.3); }
+    .step-num {
+        font-family: 'Fraunces', serif; font-size: 15px; font-weight: 600; color: var(--gold-dark);
+        width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold);
+        display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .step h3 { font-size: 20px; color: var(--pine); margin-bottom: 8px; }
+    .step p { font-size: 15px; color: var(--ink-soft); }
+
+    /* ---------- coverage ---------- */
+    .cover-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .cover-card {
+        padding: 38px 34px; border-radius: var(--radius); position: relative; overflow: hidden;
+        border: 1px solid var(--tint-line);
+    }
+    .cover-card.health { background: var(--pine); color: var(--white); }
+    .cover-card.life { background: var(--white); }
+    .cover-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .cover-card.health .cover-icon { background: rgba(255,255,255,0.14); }
+    .cover-card.life .cover-icon { background: var(--tint); }
+    .cover-card h3 { font-size: 25px; margin-bottom: 12px; }
+    .cover-card.health h3 { color: var(--white); }
+    .cover-card.life h3 { color: var(--pine); }
+    .cover-card p { font-size: 15.5px; margin-bottom: 18px; }
+    .cover-card.health p { color: rgba(255,255,255,0.82); }
+    .cover-card.life p { color: var(--ink-soft); }
+    .cover-list { list-style: none; }
+    .cover-list li { font-size: 14.5px; padding: 7px 0 7px 26px; position: relative; }
+    .cover-card.health .cover-list li { color: rgba(255,255,255,0.9); }
+    .cover-card.life .cover-list li { color: var(--ink); }
+    .cover-list li::before {
+        content: ''; position: absolute; left: 0; top: 13px; width: 14px; height: 8px;
+        border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+        transform: rotate(-45deg);
+    }
+
+    /* ---------- why me ---------- */
+    .why { background: var(--pine); border-radius: 24px; padding: 60px 48px; color: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+    .why-head { text-align: center; margin-bottom: 46px; }
+    .why-head h2 { font-size: clamp(28px, 3.6vw, 38px); color: var(--white); margin-bottom: 12px; }
+    .why-head p { font-size: 16px; color: rgba(255,255,255,0.78); max-width: 540px; margin: 0 auto; }
+    .why-item h3 { font-size: 19px; color: var(--white); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .why-item h3 .wm { width: 30px; height: 30px; border-radius: 8px; background: rgba(224,160,58,0.22); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why-item p { font-size: 14.5px; color: rgba(255,255,255,0.76); }
+
+    /* ---------- bottom CTA ---------- */
+    .final { text-align: center; padding: 90px 0 40px; }
+    .final h2 { font-size: clamp(32px, 4.5vw, 48px); color: var(--pine); margin-bottom: 18px; }
+    .final p { font-size: 18px; color: var(--ink-soft); max-width: 480px; margin: 0 auto 30px; }
+
+    /* ---------- footer ---------- */
+    footer { border-top: 1px solid var(--tint-line); padding: 44px 0 40px; margin-top: 40px; }
+    .foot-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+    .foot-brand { max-width: 300px; }
+    .foot-brand .logo { margin-bottom: 12px; }
+    .foot-brand p { font-size: 13px; color: var(--ink-soft); }
+    .foot-col h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .foot-col a, .foot-col span { display: block; font-size: 14px; color: var(--ink-soft); text-decoration: none; margin-bottom: 8px; }
+    .foot-col a:hover { color: var(--pine); }
+    .disclaimer { font-size: 11.5px; color: var(--ink-soft); line-height: 1.6; margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--tint-line); opacity: 0.9; }
+
+    /* ---------- trust strip ---------- */
+    .trust-strip-wrap { border-top: 1px solid var(--tint-line); border-bottom: 1px solid var(--tint-line); background: var(--white); }
+    .trust-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 32px 24px; }
+    .trust-stat { text-align: center; }
+    .ts-num { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; color: var(--pine); line-height: 1; margin-bottom: 6px; }
+    .ts-num.ts-stars { color: var(--gold); letter-spacing: 3px; }
+    .ts-label { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+    @media (max-width: 700px) { .trust-strip { grid-template-columns: repeat(2, 1fr); gap: 26px 12px; } }
+
+    /* ---------- hero ambient (subtle) ---------- */
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(64px); opacity: 0.5; z-index: 0; pointer-events: none; }
+    .hero-blob.b1 { width: 380px; height: 380px; background: radial-gradient(circle, rgba(47,107,78,0.22), transparent 70%); top: -120px; right: -70px; animation: float1 15s ease-in-out infinite; }
+    .hero-blob.b2 { width: 320px; height: 320px; background: radial-gradient(circle, rgba(224,160,58,0.15), transparent 70%); bottom: -150px; left: -60px; animation: float2 19s ease-in-out infinite; }
+    .hero .wrap { position: relative; z-index: 1; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-26px,22px);} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(22px,-18px);} }
+
+    /* ---------- scroll reveal ---------- */
+    .js-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .js-reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- motion ---------- */
+    .rise { opacity: 0; transform: translateY(16px); animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .rise.d1 { animation-delay: 0.08s; }
+    .rise.d2 { animation-delay: 0.16s; }
+    .rise.d3 { animation-delay: 0.24s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .rise { animation: none; opacity: 1; transform: none; }
+        .js-reveal { opacity: 1 !important; transform: none !important; }
+        .hero-blob { animation: none !important; }
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 900px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+        .hero { padding: 48px 0 60px; }
+        .steps, .why-grid { grid-template-columns: 1fr; gap: 18px; }
+        .cover-grid { grid-template-columns: 1fr; }
+        .nav-note { display: none; }
+        .why { padding: 44px 26px; }
+        .section { padding: 60px 0; }
+    }
+    @media (max-width: 480px) {
+        .field-row { grid-template-columns: 1fr; }
+        .form-card { padding: 24px 20px; }
+        .hero h1 { font-size: 34px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+    <div class="wrap nav-in">
+        <div class="logo"><span class="logo-mark"></span> Savolle Insurance</div>
+        <div class="nav-right">
+            <span class="nav-note">Licensed broker · Health &amp; Life</span>
+            <a href="#quote" class="nav-cta">Get a free quote</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+    <span class="hero-blob b1"></span>
+    <span class="hero-blob b2"></span>
+    <div class="wrap hero-grid">
+        <div>
+            <span class="eyebrow rise"><span class="dot"></span> No cost to you — ever</span>
+            <h1 class="rise d1">Health and life insurance,
+                <span class="mark-word">handled<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 9 C 40 3, 120 3, 198 8" stroke="#E0A03A" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>
+                for you.</h1>
+            <p class="hero-sub rise d2">You tell me what you need. I do the shopping, compare the plans across carriers, and find you coverage that actually fits your life and budget. Free to you — I&rsquo;m paid by the carriers, not by you.</p>
+            <div class="hero-cta-row rise d3">
+                <a href="#quote" class="btn-primary">Get my free quote</a>
+                <span class="hero-trust">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.5-3 8-7 11-4-3-7-6.5-7-11V5l7-3z" stroke="#2F6B4E" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#2F6B4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Licensed &amp; independent
+                </span>
+            </div>
+
+            <!-- MEET YOUR BROKER CARD.
+                 ADD YOUR PHOTO: save a friendly head-and-shoulders headshot as  marc-photo.jpg
+                 in the same folder as this file (next to index.html). It will appear automatically.
+                 Until then, your initials show instead so nothing looks broken. -->
+            <div class="broker-card rise d3">
+                <div class="broker-photo">
+                    <img src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="broker-initials" style="display:none;">MS</div>
+                </div>
+                <div class="broker-info">
+                    <div class="broker-name">Marc Savolle</div>
+                    <div class="broker-role">Licensed Health &amp; Life Broker</div>
+                    <div class="broker-line">I&rsquo;ll personally find and set up your coverage &mdash; and I&rsquo;m still here after you enroll.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEAD FORM -->
+        <div class="form-card rise d2" id="quote">
+            <div id="form-live">
+                <h3>Get your free quote</h3>
+                <p class="fc-sub">Takes 30 seconds. I&rsquo;ll reach out to find your best options.</p>
+                <div class="privacy-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#103D2C" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#103D2C" stroke-width="1.7"/><circle cx="12" cy="15.5" r="1.4" fill="#E0A03A"/></svg>
+                    <span><b>Your info stays with me.</b> I never sell it or hand it to other agents &mdash; so you won&rsquo;t get bombarded with calls from other insurance companies.</span>
+                </div>
+
+                <form id="lead-form" novalidate>
+                    <div class="steps-bar"><span class="sb-fill" id="sb-fill"></span></div>
+                    <div class="steps-count" id="steps-count">Step 1 of 5</div>
+
+                    <!-- STEP 1: coverage -->
+                    <div class="fstep active" data-step="1">
+                        <h4 class="fstep-q">What are you looking for?</h4>
+                        <div class="choice-grid">
+                            <button type="button" class="choice" data-field="coverage" data-value="Health" onclick="choosePick(this)">Health</button>
+                            <button type="button" class="choice" data-field="coverage" data-value="Life" onclick="choosePick(this)">Life</button>
+                            <button type="button" class="choice" data-field="coverage" data-value="Health + Life" onclick="choosePick(this)">Both</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: ZIP -->
+                    <div class="fstep" data-step="2">
+                        <h4 class="fstep-q">What&rsquo;s your ZIP code?</h4>
+                        <input type="text" id="lf-zip" inputmode="numeric" maxlength="5" placeholder="e.g. 33602" autocomplete="postal-code">
+                        <div class="fstep-nav">
+                            <button type="button" class="btn-back" onclick="stepGo(1)">Back</button>
+                            <button type="button" class="btn-next" onclick="stepNext(2)">Continue</button>
+                        </div>
+                        <div class="step-err" id="err-2"></div>
+                    </div>
+
+                    <!-- STEP 3: currently insured -->
+                    <div class="fstep" data-step="3">
+                        <h4 class="fstep-q">Do you have coverage right now?</h4>
+                        <div class="choice-grid">
+                            <button type="button" class="choice" data-field="insured" data-value="No" onclick="choosePick(this)">No</button>
+                            <button type="button" class="choice" data-field="insured" data-value="Yes, want better" onclick="choosePick(this)">Yes</button>
+                            <button type="button" class="choice" data-field="insured" data-value="Losing it soon" onclick="choosePick(this)">Losing soon</button>
+                        </div>
+                        <div class="fstep-nav"><button type="button" class="btn-back" onclick="stepGo(2)">Back</button></div>
+                    </div>
+
+                    <!-- STEP 4: age -->
+                    <div class="fstep" data-step="4">
+                        <h4 class="fstep-q">What&rsquo;s your age range?</h4>
+                        <div class="choice-grid choice-6">
+                            <button type="button" class="choice" data-field="age" data-value="Under 30" onclick="choosePick(this)">Under 30</button>
+                            <button type="button" class="choice" data-field="age" data-value="30-39" onclick="choosePick(this)">30&ndash;39</button>
+                            <button type="button" class="choice" data-field="age" data-value="40-49" onclick="choosePick(this)">40&ndash;49</button>
+                            <button type="button" class="choice" data-field="age" data-value="50-59" onclick="choosePick(this)">50&ndash;59</button>
+                            <button type="button" class="choice" data-field="age" data-value="60-64" onclick="choosePick(this)">60&ndash;64</button>
+                            <button type="button" class="choice" data-field="age" data-value="65+" onclick="choosePick(this)">65+</button>
+                        </div>
+                        <div class="fstep-nav"><button type="button" class="btn-back" onclick="stepGo(3)">Back</button></div>
+                    </div>
+
+                    <!-- STEP 5: contact -->
+                    <div class="fstep" data-step="5">
+                        <h4 class="fstep-q">Where should I send your quote?</h4>
+                        <div class="field">
+                            <label for="lf-name">Full name</label>
+                            <input type="text" id="lf-name" name="name" autocomplete="name">
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="lf-phone">Phone</label>
+                                <input type="tel" id="lf-phone" name="phone" autocomplete="tel">
+                            </div>
+                            <div class="field">
+                                <label for="lf-email">Email</label>
+                                <input type="email" id="lf-email" name="email" autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="lf-notes">Anything else? (optional)</label>
+                            <textarea id="lf-notes" name="notes" placeholder="Best time to reach you, questions..."></textarea>
+                        </div>
+
+                        <!-- honeypot -->
+                        <div class="hp" aria-hidden="true">
+                            <label for="lf-company">Company (leave blank)</label>
+                            <input type="text" id="lf-company" name="company" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="consent">
+                            <input type="checkbox" id="lf-consent">
+                            <label for="lf-consent">
+                                By submitting, I agree that Savolle Insurance and its licensed agent may contact me at the number and email above — including by phone call, text message, and email, and using automated technology — about insurance. This isn&rsquo;t a condition of any purchase, and message/data rates may apply. See our <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a> and <a href="#" onclick="openLegal('terms');return false;">Terms</a>.
+                            </label>
+                        </div>
+
+                        <div class="fstep-nav">
+                            <button type="button" class="btn-back" onclick="stepGo(4)">Back</button>
+                            <button type="submit" class="btn-next" id="lf-submit">Get my free quote</button>
+                        </div>
+                        <div class="form-msg" id="lf-msg"></div>
+                        <p class="form-foot">Private &amp; secure. Your details go only to me &mdash; never sold, never shared with other agents or marketers.</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- success replaces the form -->
+            <div class="thanks" id="form-thanks" style="display:none;">
+                <div class="check">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#103D2C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Got it — thank you!</h3>
+                <p>Your request is in. I&rsquo;ll personally reach out shortly to go over your best coverage options. Talk soon.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============ TRUST STRIP ============
+     FILL THESE WITH YOUR REAL NUMBERS before going live.
+     Do NOT display figures you can't back up: as a licensed agent, false or misleading
+     advertising is a regulatory violation, and the FTC now bans fake reviews/testimonials.
+     - "families helped": your real client count (or remove until you can back it up)
+     - "carriers": the real number of carriers you're appointed with
+     - "response time": your honest average (you can genuinely win on this)
+     - stars: wire to your REAL Google review rating once you're collecting reviews -->
+<section class="trust-strip-wrap">
+    <div class="wrap trust-strip">
+        <div class="trust-stat">
+            <div class="ts-num"><span data-count="600" data-suffix="+">0</span></div>
+            <div class="ts-label">Families helped</div>
+        </div>
+        <div class="trust-stat">
+            <div class="ts-num"><span data-count="15" data-suffix="+">0</span></div>
+            <div class="ts-label">Insurance carriers</div>
+        </div>
+        <div class="trust-stat">
+            <div class="ts-num">Under <span data-count="10">0</span> min</div>
+            <div class="ts-label">Average response</div>
+        </div>
+        <div class="trust-stat">
+            <div class="ts-num ts-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="ts-label">From real client reviews</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow"><span class="dot"></span> Simple &amp; personal</span>
+            <h2>How it works</h2>
+            <p>No call centers, no runaround. Just three steps from confused to covered.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Tell me what you need</h3>
+                <p>Fill out the quick form, or we hop on a call. You tell me your situation, your budget, and what matters to you.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>I shop the plans</h3>
+                <p>I compare options across the carriers I work with and bring you the ones that genuinely fit — no pressure, no jargon.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>You get covered</h3>
+                <p>Pick the plan you like and I handle the enrollment with you, start to finish. I&rsquo;m your point of contact after, too.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COVERAGE ============ -->
+<section class="section" style="padding-top:20px;">
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow"><span class="dot"></span> What I help with</span>
+            <h2>Two things, done right</h2>
+            <p>Whether you&rsquo;re protecting your health or your family&rsquo;s future, I&rsquo;ll find the fit.</p>
+        </div>
+        <div class="cover-grid">
+            <div class="cover-card health">
+                <div class="cover-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21C7 17 4 13.5 4 9.5 4 6.5 6.2 5 8.5 5c1.6 0 3 .9 3.5 2 .5-1.1 1.9-2 3.5-2C20.8 5 20 6.5 20 9.5c0 4-3 7.5-8 11.5z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9v4M10 11h4" stroke="#E0A03A" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Health insurance</h3>
+                <p>Coverage for you, your family, or the self-employed — that doesn&rsquo;t leave you overpaying or under-protected.</p>
+                <ul class="cover-list">
+                    <li>Individual &amp; family plans</li>
+                    <li>Self-employed &amp; between jobs</li>
+                    <li>Short-term &amp; supplemental options</li>
+                    <li>Help understanding deductibles &amp; networks</li>
+                </ul>
+            </div>
+            <div class="cover-card life">
+                <div class="cover-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.4-3 8.2-7 10-4-1.8-7-5.6-7-10V6l7-3z" stroke="#103D2C" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2" stroke="#E0A03A" stroke-width="1.7"/><path d="M12 12v4" stroke="#E0A03A" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Life insurance</h3>
+                <p>Peace of mind that your family is taken care of — with a plan sized to your life, not a sales quota.</p>
+                <ul class="cover-list">
+                    <li>Term &amp; whole life</li>
+                    <li>Plans with living benefits</li>
+                    <li>Coverage for young families</li>
+                    <li>Simple, honest guidance on how much you need</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHY ME ============ -->
+<section class="section">
+    <div class="wrap">
+        <div class="why">
+            <div class="why-head">
+                <h2>Why work with me</h2>
+                <p>I&rsquo;m an independent, licensed broker — which means I work for you, not for one insurance company.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3><span class="wm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#E0A03A" stroke-width="2" stroke-linecap="round"/></svg></span> Free to you</h3>
+                    <p>You never pay me a dime. I&rsquo;m compensated by the carriers, so my help costs you nothing.</p>
+                </div>
+                <div class="why-item">
+                    <h3><span class="wm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M14 6l6 6-6 6" stroke="#E0A03A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Independent</h3>
+                    <p>I&rsquo;m not tied to one company, so I compare real options and recommend what&rsquo;s right for you.</p>
+                </div>
+                <div class="why-item">
+                    <h3><span class="wm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 2z" stroke="#E0A03A" stroke-width="1.6" stroke-linejoin="round"/></svg></span> A real person</h3>
+                    <p>You get me directly — someone who picks up, explains things simply, and is here after you enroll.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="wrap final">
+    <h2>Ready to see your options?</h2>
+    <p>Get a free, no-pressure quote. It only takes a minute, and there&rsquo;s no obligation.</p>
+    <a href="#quote" class="btn-primary">Get my free quote</a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="wrap">
+        <div class="foot-grid">
+            <div class="foot-brand">
+                <div class="logo"><span class="logo-mark"></span> Savolle Insurance</div>
+                <p>Independent health &amp; life insurance brokerage. Helping individuals and families find coverage that fits.</p>
+            </div>
+            <!-- CONTACT-INFO: edit these to what you want shown publicly -->
+            <div class="foot-col">
+                <h4>Contact</h4>
+                <a href="tel:+12392491333">(239) 249-1333</a>
+                <a href="mailto:msavollemedahealth@gmail.com">msavollemedahealth@gmail.com</a>
+                <span>Tampa, FL</span>
+            </div>
+            <div class="foot-col">
+                <h4>Get started</h4>
+                <a href="#quote">Free quote</a>
+                <a href="#how">How it works</a>
+                <a href="#quote">Health insurance</a>
+                <a href="#quote">Life insurance</a>
+            </div>
+        </div>
+        <!-- LICENSE-NUMBER: put your real license number in the disclaimer below -->
+        <p class="disclaimer">
+            Savolle Insurance is an independent insurance brokerage operated by a licensed insurance agent (License #: __________). We do not underwrite insurance; coverage is provided by the insurance carriers. Submitting a quote request does not bind coverage or create an obligation to purchase. Not affiliated with or endorsed by any government agency. Product availability varies by state. This site is for general information and lead requests only and is not an offer of insurance in any state where the agent is not licensed. &copy; <span id="yr"></span> Savolle Insurance. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<!-- ============ EMAILJS (delivers each lead to your inbox) ============ -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ========================================================================
+    // LEAD_CONFIG — where your leads get emailed. These are your existing
+    // EmailJS values (same ones your app uses). To send leads to a different
+    // address, change LEAD_TO_EMAIL. To use a dedicated EmailJS template just
+    // for leads, swap SERVICE_ID / TEMPLATE_ID / PUBLIC_KEY.
+    // ========================================================================
+    var LEAD_CONFIG = {
+        PUBLIC_KEY:  'r_U-6vIDsxJ_s8IEC',
+        SERVICE_ID:  'marc_gmail',
+        TEMPLATE_ID: 'template_gvczx4v',
+        LEAD_TO_EMAIL: 'msavollemedahealth@gmail.com',
+        LEAD_TO_NAME:  'Marc (New Lead)'
+    };
+
+    (function () {
+        try { emailjs.init({ publicKey: LEAD_CONFIG.PUBLIC_KEY }); } catch (e) {}
+    })();
+
+    var form = document.getElementById('lead-form');
+    var msg = document.getElementById('lf-msg');
+    var submitBtn = document.getElementById('lf-submit');
+
+    function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+    // ---- multi-step navigation ----
+    var answers = { coverage: '', insured: '', age: '' };
+    var currentStep = 1;
+    var TOTAL_STEPS = 5;
+
+    function showStep(n) {
+        currentStep = n;
+        var steps = document.querySelectorAll('.fstep');
+        steps.forEach(function (s) { s.classList.toggle('active', Number(s.getAttribute('data-step')) === n); });
+        var fill = document.getElementById('sb-fill');
+        if (fill) fill.style.width = (n / TOTAL_STEPS * 100) + '%';
+        var count = document.getElementById('steps-count');
+        if (count) count.textContent = 'Step ' + n + ' of ' + TOTAL_STEPS;
+        var active = document.querySelector('.fstep[data-step="' + n + '"]');
+        var firstInput = active ? active.querySelector('input:not([type=hidden]):not([tabindex="-1"]), textarea') : null;
+        if (firstInput) { setTimeout(function () { try { firstInput.focus(); } catch (e) {} }, 120); }
+    }
+    function stepGo(n) { showStep(n); }
+    function stepNext(fromStep) {
+        if (fromStep === 2) {
+            var zip = val('lf-zip');
+            var err = document.getElementById('err-2');
+            if (!/^\d{5}$/.test(zip)) { if (err) err.textContent = 'Please enter a 5-digit ZIP code.'; return; }
+            if (err) err.textContent = '';
+        }
+        showStep(fromStep + 1);
+    }
+    function choosePick(btn) {
+        var field = btn.getAttribute('data-field');
+        var value = btn.getAttribute('data-value');
+        answers[field] = value;
+        var group = btn.closest('.fstep');
+        if (group) group.querySelectorAll('.choice[data-field="' + field + '"]').forEach(function (b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        setTimeout(function () { if (currentStep < TOTAL_STEPS) showStep(currentStep + 1); }, 190);
+    }
+    // expose for inline onclick
+    window.stepGo = stepGo; window.stepNext = stepNext; window.choosePick = choosePick;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        msg.textContent = '';
+        msg.className = 'form-msg';
+
+        // honeypot: if filled, it's a bot — pretend success, send nothing
+        if (val('lf-company')) { showThanks(); return; }
+
+        var name = val('lf-name');
+        var phone = val('lf-phone');
+        var email = val('lf-email');
+        var consent = document.getElementById('lf-consent').checked;
+        var coverage = answers.coverage || 'Not specified';
+        var insured = answers.insured || '—';
+        var age = answers.age || '—';
+        var zip = val('lf-zip');
+
+        if (!name || !phone || !email) { fail('Please fill in your name, phone, and email.'); return; }
+        if (!/^\S+@\S+\.\S+$/.test(email)) { fail('That email doesn\'t look right — mind checking it?'); return; }
+        if (!consent) { fail('Please check the box so I\'m allowed to contact you.'); return; }
+
+        var notes = val('lf-notes');
+        var now = new Date();
+        var stamp = now.toLocaleString();
+
+        // build a clean lead email body (easy to read and paste into your app)
+        var body = ''
+            + '<h2 style="font-family:Arial,sans-serif;color:#103D2C;margin:0 0 12px;">New lead from Savolle Insurance</h2>'
+            + '<table style="font-family:Arial,sans-serif;font-size:15px;color:#16211C;border-collapse:collapse;">'
+            + row('Name', name)
+            + row('Phone', phone)
+            + row('Email', email)
+            + row('Looking for', coverage)
+            + row('Currently insured', insured)
+            + row('ZIP', zip || '—')
+            + row('Age', age)
+            + row('Notes', notes || '—')
+            + row('Consent', 'Yes — agreed to be contacted (' + stamp + ')')
+            + row('Submitted', stamp)
+            + '</table>'
+            + '<p style="font-family:Arial,sans-serif;font-size:12px;color:#4A5A52;margin-top:16px;">Sent automatically from your Savolle Insurance quote form.</p>';
+
+        var params = {
+            to_email: LEAD_CONFIG.LEAD_TO_EMAIL,
+            to_name: LEAD_CONFIG.LEAD_TO_NAME,
+            subject: 'New lead: ' + name + ' (' + coverage + ')',
+            html_body: body
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        emailjs.send(LEAD_CONFIG.SERVICE_ID, LEAD_CONFIG.TEMPLATE_ID, params)
+            .then(function () { showThanks(); })
+            .catch(function (err) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Get my free quote';
+                fail('Something went wrong sending that. Please call or text (239) 249-1333 and I\'ll take care of you.');
+                try { console.error('Lead send error:', err); } catch (e) {}
+            });
+    });
+
+    function row(k, v) {
+        return '<tr><td style="padding:6px 18px 6px 0;color:#4A5A52;vertical-align:top;font-weight:bold;">' + k + '</td>'
+            + '<td style="padding:6px 0;">' + escapeHtml(v) + '</td></tr>';
+    }
+    function escapeHtml(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function fail(text) { msg.textContent = text; msg.className = 'form-msg err'; }
+
+    function showThanks() {
+        document.getElementById('form-live').style.display = 'none';
+        document.getElementById('form-thanks').style.display = 'block';
+        try { document.getElementById('quote').scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+        // Fire a conversion event so you can MEASURE your lead rate. Works with Google
+        // Analytics (gtag) or Tag Manager (dataLayer) once you add your ID in the head.
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'lead', event_label: 'quote_form' }); } catch (e) {}
+        try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_submitted' }); } catch (e) {}
+    }
+
+    // ---- Privacy Policy / Terms popup ----
+    function openLegal(which) {
+        var m = document.getElementById('legal-modal');
+        var t = document.getElementById('legal-title');
+        var b = document.getElementById('legal-body');
+        if (which === 'terms') { t.textContent = 'Terms of Use'; b.innerHTML = LEGAL_TERMS; }
+        else { t.textContent = 'Privacy Policy'; b.innerHTML = LEGAL_PRIVACY; }
+        m.style.display = 'flex';
+    }
+    function closeLegal() { document.getElementById('legal-modal').style.display = 'none'; }
+
+    var LEGAL_PRIVACY = ''
+        + '<p>This is a starter Privacy Policy. Have it reviewed by an attorney and tailor it to your business before relying on it.</p>'
+        + '<p><b>What we collect.</b> When you submit the quote form, we collect the contact and coverage details you provide (name, phone, email, coverage interest, state, age range, and any notes). We do not ask for health details on this form.</p>'
+        + '<p><b>We never sell your information</b>, and we never share it with other agents, marketers, or lead buyers. You will not be passed around or bombarded with calls from other companies.</p>'
+        + '<p><b>How we use it.</b> We use your information only to contact you about insurance options you requested and to help you find and enroll in coverage.</p>'
+        + '<p><b>How we contact you.</b> By submitting, you consent to be contacted by phone, text, and email, including by automated means, about insurance. You can opt out at any time by telling us to stop or replying STOP to texts.</p>'
+        + '<p><b>Sharing.</b> The only parties we share your information with are the insurance carriers needed to give you quotes and enroll you in the coverage you requested, and as required by law. We do not share it with other agencies or marketers.</p>'
+        + '<p><b>Security.</b> We take reasonable steps to protect your information. No method of transmission is perfectly secure.</p>'
+        + '<p><b>Contact.</b> Questions? Call (239) 249-1333 or email msavollemedahealth@gmail.com.</p>';
+
+    var LEGAL_TERMS = ''
+        + '<p>This is a starter Terms of Use. Have it reviewed by an attorney before relying on it.</p>'
+        + '<p>This website is operated by a licensed insurance agent and provides general information and a way to request insurance quotes. It is not an offer of insurance in any state where the agent is not licensed.</p>'
+        + '<p>Submitting a quote request does not bind coverage or guarantee approval. Coverage is issued by insurance carriers, subject to their terms and underwriting. Product availability varies by state.</p>'
+        + '<p>Information on this site is not legal, tax, or financial advice. We are not affiliated with or endorsed by any government agency.</p>';
+</script>
+
+<!-- Privacy / Terms modal -->
+<div id="legal-modal" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(22,33,28,0.55);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeLegal()">
+    <div style="background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:82vh;overflow:auto;box-shadow:0 30px 80px -20px rgba(16,61,44,0.4);">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 26px;border-bottom:1px solid rgba(16,61,44,0.12);position:sticky;top:0;background:#fff;">
+            <h3 id="legal-title" style="font-family:'Fraunces',serif;font-size:22px;color:#103D2C;">Privacy Policy</h3>
+            <span onclick="closeLegal()" style="cursor:pointer;font-size:20px;color:#4A5A52;">&times;</span>
+        </div>
+        <div id="legal-body" style="padding:22px 26px;font-size:14px;color:#4A5A52;line-height:1.65;"></div>
+        <div style="padding:0 26px 24px;"><button onclick="closeLegal()" style="background:#103D2C;color:#fff;border:none;padding:11px 22px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;">Got it</button></div>
+    </div>
+</div>
+
+<!-- subtle motion: scroll reveals + count-up on the trust numbers -->
+<script>
+(function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function fmt(el) {
+        var p = el.getAttribute('data-prefix') || '';
+        var s = el.getAttribute('data-suffix') || '';
+        return p + (Number(el.getAttribute('data-count')) || 0).toLocaleString() + s;
+    }
+    function runCount(el) {
+        var target = Number(el.getAttribute('data-count')) || 0;
+        if (reduce) { el.textContent = fmt(el); return; }
+        var p = el.getAttribute('data-prefix') || '', s = el.getAttribute('data-suffix') || '';
+        var dur = 1100, start = null;
+        function step(ts) {
+            if (!start) start = ts;
+            var prog = Math.min((ts - start) / dur, 1);
+            el.textContent = p + Math.floor(prog * target).toLocaleString() + s;
+            if (prog < 1) requestAnimationFrame(step); else el.textContent = p + target.toLocaleString() + s;
+        }
+        requestAnimationFrame(step);
+    }
+
+    var fadeTargets = document.querySelectorAll('.section-head, .step, .cover-card, .why-item, .final h2, .final p, .trust-stat');
+    var countEls = document.querySelectorAll('[data-count]');
+
+    if (reduce || !('IntersectionObserver' in window)) {
+        countEls.forEach(function (el) { el.textContent = fmt(el); });
+        return;
+    }
+
+    fadeTargets.forEach(function (el) { el.classList.add('js-reveal'); });
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('in');
+            var c = e.target.querySelector ? e.target.querySelector('[data-count]') : null;
+            if (c) runCount(c);
+            if (e.target.hasAttribute && e.target.hasAttribute('data-count')) runCount(e.target);
+            io.unobserve(e.target);
+        });
+    }, { threshold: 0.2 });
+    fadeTargets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
