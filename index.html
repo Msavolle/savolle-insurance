@@ -264,6 +264,23 @@
     .section-head h2 { font-size: clamp(30px, 4vw, 42px); color: var(--pine); margin-bottom: 14px; }
     .section-head p { font-size: 17px; color: var(--ink-soft); }
 
+    /* ---------- about / meet marc ---------- */
+    .about { padding: 88px 0; }
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: center; }
+    .about-photo-wrap { position: relative; display: inline-block; max-width: 360px; width: 100%; }
+    .about-photo-wrap::before { content: ''; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid var(--gold); border-radius: 20px; z-index: 0; }
+    .about-photo { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block; box-shadow: var(--shadow); }
+    .about-photo-fallback { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; border-radius: 20px; background: var(--pine); color: #fff; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 84px; font-weight: 600; box-shadow: var(--shadow); }
+    .about h2 { font-size: clamp(30px, 4vw, 44px); color: var(--pine); margin-bottom: 20px; }
+    .about-text p { font-size: 16.5px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; }
+    .about-sig { font-family: 'Fraunces', serif; font-size: 18px; color: var(--pine); font-weight: 600; margin-top: 24px; }
+    @media (max-width: 900px) {
+        .about { padding: 60px 0; }
+        .about-grid { grid-template-columns: 1fr; gap: 40px; }
+        .about-photo-wrap { max-width: 260px; display: block; margin: 0 auto; }
+        .about-photo-wrap::before { inset: 12px -12px -12px 12px; }
+    }
+
     /* ---------- how it works ---------- */
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .step { position: relative; padding: 30px 26px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--tint-line); box-shadow: var(--shadow-soft); transition: transform 0.2s ease, box-shadow 0.2s ease; }
@@ -428,7 +445,7 @@
                  Until then, your initials show instead so nothing looks broken. -->
             <div class="broker-card rise d3">
                 <div class="broker-photo">
-                    <img src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
                     <div class="broker-initials" style="display:none;">MS</div>
                 </div>
                 <div class="broker-info">
@@ -586,6 +603,26 @@
         <div class="trust-stat">
             <div class="ts-num"><span data-count="100" data-suffix="%">0</span></div>
             <div class="ts-label">Independent</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ABOUT / MEET MARC ============ -->
+<section class="about" id="about">
+    <div class="wrap about-grid">
+        <div>
+            <div class="about-photo-wrap">
+                <img class="about-photo" src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                <div class="about-photo-fallback" style="display:none;">MS</div>
+            </div>
+        </div>
+        <div class="about-text">
+            <span class="eyebrow"><span class="dot"></span> Meet your broker</span>
+            <h2>Insurance felt confusing to me too.</h2>
+            <p>When I first got into this world, I&rsquo;ll be honest &mdash; I thought insurance was incredibly confusing. Plans, deductibles, networks, all of it. So I made a decision: to really learn it, inside and out, so I could help people and families actually understand their coverage instead of feeling lost in it.</p>
+            <p>That&rsquo;s the whole reason I do this. My goal is simple &mdash; take something that feels overwhelming and make it easy and as stress-free as possible for you. No jargon, no pressure. Just clear answers, honest guidance, and someone who walks you through every step and sticks around long after you&rsquo;re covered.</p>
+            <p>When we talk, you&rsquo;re not getting a call center or a script. You&rsquo;re getting me &mdash; a licensed broker who genuinely wants to make sure you and your family have coverage that fits.</p>
+            <div class="about-sig">&mdash; Marc Savolle, Licensed Health &amp; Life Broker</div>
         </div>
     </div>
 </section>
