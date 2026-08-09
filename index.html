@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M6FP4JDWP8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M6FP4JDWP8');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Savolle Insurance — Health & Life Coverage, Handled for You</title>
@@ -109,6 +117,9 @@
         transition: transform 0.15s ease, background 0.15s ease;
     }
     .nav-cta:hover { background: var(--pine-mid); transform: translateY(-1px); }
+    .nav-link { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; margin-right: 20px; transition: color 0.15s ease; }
+    .nav-link:hover { color: var(--pine); }
+    @media (max-width: 720px) { .nav-right .nav-link { display: none; } }
     .nav-cta-mobile { display: none; }
 
     /* ---------- hero ---------- */
@@ -411,8 +422,10 @@
     <div class="wrap nav-in">
         <div class="logo"><span class="logo-mark"></span> Savolle Insurance</div>
         <div class="nav-right">
-            <span class="nav-note">Licensed broker · Health &amp; Life</span>
-            <a href="#quote" class="nav-cta nav-cta-mobile">Get a free quote</a>
+            <a href="/" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="/guides" class="nav-link">Guides</a>
+            <a href="#quote" class="nav-cta">Get a free quote</a>
         </div>
     </div>
 </nav>

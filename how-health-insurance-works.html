@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M6FP4JDWP8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M6FP4JDWP8');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Health Insurance Actually Works: A Plain-English Guide | Savolle Insurance</title>
+<meta name="description" content="Confused by premiums, deductibles, copays, coinsurance, and networks? Here's how health insurance actually works, explained in plain English by a licensed broker — no jargon, no stress.">
+<link rel="canonical" href="https://savolleinsurance.com/how-health-insurance-works">
+
+<!-- SEO: article structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Health Insurance Actually Works: A Plain-English Guide",
+  "description": "A plain-English guide to how health insurance works — premiums, deductibles, copays, coinsurance, out-of-pocket maximums, and networks — from a licensed broker.",
+  "author": { "@type": "Person", "name": "Marc Savolle" },
+  "publisher": { "@type": "Organization", "name": "Savolle Insurance" },
+  "mainEntityOfPage": "https://savolleinsurance.com/how-health-insurance-works"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg: #FBFAF6; --ink: #16211C; --ink-soft: #4A5A52; --pine: #103D2C; --pine-mid: #2F6B4E;
+        --tint: #E9F0EA; --tint-line: rgba(16, 61, 44, 0.12); --gold: #E0A03A; --gold-dark: #C6892C; --white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--pine-mid); }
+
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,0.9); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--tint-line); }
+    .nav-in { max-width: 1000px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .logo { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; color: var(--pine); text-decoration: none; display: flex; align-items: center; gap: 9px; letter-spacing: -0.02em; }
+    .logo-mark { width: 25px; height: 25px; border-radius: 8px; background: var(--pine); position: relative; flex-shrink: 0; }
+    .logo-mark::after { content: ''; position: absolute; inset: 6px; border: 2px solid var(--gold); border-radius: 3px; border-bottom: none; border-right: none; }
+    .nav-cta { background: var(--pine); color: #fff; text-decoration: none; padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 600; transition: background 0.15s ease; }
+    .nav-cta:hover { background: var(--pine-mid); }
+    .nav-right { display: flex; align-items: center; }
+    .nav-link { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; margin-right: 20px; transition: color 0.15s ease; }
+    .nav-link:hover { color: var(--pine); }
+    @media (max-width: 720px) { .nav-link { display: none; } }
+
+    header.post { padding: 56px 0 34px; }
+    .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pine-mid); background: var(--tint); padding: 6px 13px; border-radius: 999px; margin-bottom: 22px; }
+    h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 46px); font-weight: 600; color: var(--pine); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 18px; }
+    .deck { font-size: 19px; color: var(--ink-soft); margin-bottom: 26px; }
+    .byline { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-soft); padding-top: 20px; border-top: 1px solid var(--tint-line); }
+    .byline .mono { width: 40px; height: 40px; border-radius: 50%; background: var(--pine); color: #fff; font-family: 'Fraunces', serif; font-weight: 600; display: flex; align-items: center; justify-content: center; font-size: 15px; box-shadow: inset 0 0 0 2px rgba(224,160,58,0.6); }
+    .byline b { color: var(--ink); font-weight: 600; }
+
+    article { padding-bottom: 20px; }
+    article h2 { font-family: 'Fraunces', serif; font-size: clamp(24px, 3.6vw, 31px); font-weight: 600; color: var(--pine); margin: 44px 0 14px; line-height: 1.15; }
+    article h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 26px 0 8px; }
+    article p { font-size: 17.5px; color: var(--ink); margin-bottom: 18px; }
+    article strong { color: var(--pine); font-weight: 600; }
+    article ul { margin: 0 0 18px 20px; }
+    article li { font-size: 17.5px; margin-bottom: 8px; }
+
+    .term { background: var(--white); border: 1px solid var(--tint-line); border-left: 4px solid var(--gold); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; box-shadow: 0 4px 18px -12px rgba(16,61,44,0.25); }
+    .term-h { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .term-n { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 600; color: var(--gold-dark); flex-shrink: 0; }
+    .term-t { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--pine); }
+    .term p { font-size: 16px; color: var(--ink-soft); margin: 0; }
+
+    .example { background: var(--pine); color: #fff; border-radius: 16px; padding: 28px 30px; margin: 30px 0; }
+    .example h3 { color: #fff; margin-top: 0; font-family: 'Fraunces', serif; font-size: 21px; }
+    .example p { color: rgba(255,255,255,0.9); font-size: 16.5px; }
+    .example ul { margin-left: 20px; }
+    .example li { color: rgba(255,255,255,0.9); font-size: 16.5px; }
+    .example strong { color: var(--gold); }
+
+    .callout { background: var(--tint); border-radius: 12px; padding: 20px 22px; margin: 26px 0; font-size: 16.5px; color: var(--pine); }
+    .callout b { color: var(--pine); }
+
+    .cta { background: var(--white); border: 1px solid var(--tint-line); border-radius: 18px; padding: 36px 32px; margin: 46px 0 20px; text-align: center; box-shadow: 0 18px 50px -20px rgba(16,61,44,0.28); }
+    .cta h2 { font-family: 'Fraunces', serif; font-size: 27px; color: var(--pine); margin: 0 0 12px; }
+    .cta p { font-size: 17px; color: var(--ink-soft); max-width: 460px; margin: 0 auto 24px; }
+    .btn { display: inline-block; background: var(--gold); color: #3A2A08; text-decoration: none; padding: 15px 30px; border-radius: 999px; font-size: 16px; font-weight: 700; box-shadow: 0 10px 26px -10px rgba(224,160,58,0.7); transition: transform 0.15s ease, background 0.15s ease; }
+    .btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+
+    footer { border-top: 1px solid var(--tint-line); padding: 40px 0; margin-top: 30px; }
+    .foot { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .foot-top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .foot a { color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-right: 18px; }
+    .foot a:hover { color: var(--pine); }
+    .disclaimer { font-size: 11.5px; color: var(--ink-soft); line-height: 1.6; margin-top: 24px; opacity: 0.9; }
+
+    @media (max-width: 600px) { header.post { padding: 40px 0 26px; } article p, article li { font-size: 16.5px; } }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-in">
+        <a href="/" class="logo"><span class="logo-mark"></span> Savolle Insurance</a>
+        <div class="nav-right">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/guides" class="nav-link">Guides</a>
+            <a href="/#about" class="nav-link">About</a>
+            <a href="/#quote" class="nav-cta">Get a free quote</a>
+        </div>
+    </div>
+</nav>
+
+<header class="post">
+    <div class="wrap">
+        <span class="tag">Plain-English Guide</span>
+        <h1>How Health Insurance Actually Works</h1>
+        <p class="deck">Premiums, deductibles, copays, coinsurance, networks &mdash; it&rsquo;s a wall of jargon that feels almost designed to confuse you. Let&rsquo;s fix that, in plain English, with nothing left unexplained.</p>
+        <div class="byline">
+            <span class="mono">MS</span>
+            <div>By <b>Marc Savolle</b> &middot; Licensed Health &amp; Life Broker<br><span style="opacity:0.8;">About a 7-minute read</span></div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="wrap">
+        <p>If health insurance has ever made your head spin, you&rsquo;re not alone. Honestly, I felt the exact same way when I got into this world &mdash; it seemed impossibly confusing. So I decided to learn it inside and out, and now let me do for you what I wish someone had done for me: explain how health insurance <em>actually</em> works, without the jargon.</p>
+        <p>By the end of this, you&rsquo;ll understand what you&rsquo;re really paying for, what those intimidating terms mean, and how to think about picking a plan that fits your life. Take a breath &mdash; this is simpler than it looks.</p>
+
+        <h2>Start here: the big picture</h2>
+        <p>At its core, health insurance is simple: <strong>you pay a monthly fee, and in exchange, your insurance company helps pay for your medical care.</strong> That&rsquo;s it. Everything else &mdash; all those confusing terms &mdash; is just the details of <em>how</em> you and the insurance company split the costs.</p>
+        <p>Think of it like a partnership. You cover some of the cost, they cover some of the cost, and the terms of your plan spell out exactly who pays what, and when. Once you see it that way, the fear goes away. Let&rsquo;s break down the pieces.</p>
+
+        <h2>The 5 terms that actually matter</h2>
+        <p>Almost all the confusion comes down to five words. Once these click, everything else makes sense.</p>
+
+        <div class="term">
+            <div class="term-h"><span class="term-n">1</span><span class="term-t">Premium</span></div>
+            <p>Your monthly bill. This is what you pay every month just to <em>have</em> the insurance &mdash; whether you use it or not, like a subscription. You pay it whether you see the doctor 20 times or zero times. A higher premium usually means the plan covers more when you do need care.</p>
+        </div>
+        <div class="term">
+            <div class="term-h"><span class="term-n">2</span><span class="term-t">Deductible</span></div>
+            <p>What you pay before insurance kicks in. This is the amount you pay out of your own pocket for care each year <em>before</em> your insurance starts sharing the cost. If your deductible is $2,000, you pay the first $2,000 of covered bills yourself; after that, insurance starts pitching in. It resets every January.</p>
+        </div>
+        <div class="term">
+            <div class="term-h"><span class="term-n">3</span><span class="term-t">Copay</span></div>
+            <p>A flat fee for a visit. A copay is a small, fixed amount you pay for a specific service &mdash; like $30 to see your doctor or $15 for a prescription. You know the price up front, every time. Predictable, which is why people like them.</p>
+        </div>
+        <div class="term">
+            <div class="term-h"><span class="term-n">4</span><span class="term-t">Coinsurance</span></div>
+            <p>Your share of the cost after the deductible. Once you&rsquo;ve met your deductible, you usually split costs with insurance by percentage. If your coinsurance is 20%, you pay 20% of a bill and insurance pays the other 80%. So on a $1,000 procedure, you&rsquo;d pay $200.</p>
+        </div>
+        <div class="term">
+            <div class="term-h"><span class="term-n">5</span><span class="term-t">Out-of-pocket maximum</span></div>
+            <p>Your safety cap &mdash; and the most important one. It&rsquo;s the <em>most</em> you&rsquo;ll ever pay in a single year, no matter what. Once your out-of-pocket spending hits this cap, insurance pays 100% of covered care for the rest of the year. This is the number that protects you from financial catastrophe. It&rsquo;s the real &ldquo;insurance&rdquo; part of insurance.</p>
+        </div>
+
+        <h2>How they all work together (a real example)</h2>
+        <p>Terms make more sense with a story. Let&rsquo;s say Sarah has a plan with a $400/month premium, a $2,000 deductible, 20% coinsurance, and a $6,000 out-of-pocket maximum.</p>
+
+        <div class="example">
+            <h3>Walking through Sarah&rsquo;s year</h3>
+            <p>In January, she pays her <strong>$400 premium</strong> (and every month after). She feels fine and doesn&rsquo;t go to the doctor &mdash; but she still pays the premium. That&rsquo;s just having coverage.</p>
+            <p>In March, she needs a procedure that costs <strong>$5,000</strong>. Here&rsquo;s how the bill splits:</p>
+            <ul>
+                <li>First, she pays her <strong>$2,000 deductible</strong>.</li>
+                <li>That leaves $3,000. Now coinsurance kicks in: she pays 20% (<strong>$600</strong>), insurance pays 80% ($2,400).</li>
+                <li>So far this year she&rsquo;s paid <strong>$2,600</strong> out of pocket.</li>
+            </ul>
+            <p>Later that year she needs more care, and her out-of-pocket spending climbs toward $6,000. The moment she hits that <strong>$6,000 cap</strong>, she&rsquo;s done &mdash; insurance covers 100% of everything else for the rest of the year. That cap is what stops a bad year from becoming bankruptcy.</p>
+        </div>
+
+        <p>Once you see it play out like that, the terms stop being scary. They&rsquo;re just the rules of how you and your insurer share the bill.</p>
+
+        <h2>Networks: why &ldquo;PPO&rdquo; and &ldquo;HMO&rdquo; matter</h2>
+        <p>The other big source of confusion is <strong>networks</strong>. Insurance companies negotiate lower prices with certain doctors and hospitals &mdash; those are &ldquo;in-network.&rdquo; Go in-network, you pay less. Go out-of-network, you pay a lot more, or everything.</p>
+        <p>The plan type tells you how strict the network is:</p>
+        <h3>HMO &mdash; lower cost, more structure</h3>
+        <p>Usually cheaper, but you generally must stay in-network and often need a referral from a primary doctor to see a specialist. Great if you want lower costs and don&rsquo;t mind the structure.</p>
+        <h3>PPO &mdash; more flexible, usually pricier</h3>
+        <p>More freedom: you can see specialists without referrals and get <em>some</em> coverage even out-of-network. Great if you want the flexibility to choose your own doctors.</p>
+        <p>Neither is &ldquo;better&rdquo; &mdash; it depends on what you value: lower cost (HMO) or more flexibility (PPO). And if you have doctors you love, the first question is always: <strong>&ldquo;Are they in this plan&rsquo;s network?&rdquo;</strong></p>
+
+        <div class="callout">
+            <b>Good news most people miss:</b> most health plans cover <b>preventive care</b> &mdash; your annual checkup, certain screenings, vaccines &mdash; at 100%, even <em>before</em> you&rsquo;ve met your deductible. So don&rsquo;t skip your checkup thinking it&rsquo;ll cost you. It usually won&rsquo;t.
+        </div>
+
+        <h2>So how do you actually pick a plan?</h2>
+        <p>Now that you understand the pieces, choosing comes down to a few honest questions:</p>
+        <ul>
+            <li><strong>How often do you expect to need care?</strong> Healthy and rarely sick? A lower premium with a higher deductible might save you money. Managing a condition or expecting a lot of care? A higher premium with a lower deductible could be worth it.</li>
+            <li><strong>Do you have doctors you want to keep?</strong> Check the network before anything else.</li>
+            <li><strong>What could you actually afford if something went wrong?</strong> This is where the out-of-pocket maximum matters most.</li>
+            <li><strong>What fits your budget</strong> month to month &mdash; and if something happens?</li>
+        </ul>
+        <p>The &ldquo;best&rdquo; plan isn&rsquo;t the cheapest or the most expensive. It&rsquo;s the one that matches <em>your</em> life and what you can handle.</p>
+
+        <h2>Where a broker comes in (and why it&rsquo;s free)</h2>
+        <p>Here&rsquo;s the part most people don&rsquo;t know: you don&rsquo;t have to figure this out alone, and getting help doesn&rsquo;t cost you anything.</p>
+        <p>As an independent broker, this is what I do all day. I compare plans across multiple insurance companies, translate the fine print, and find the option that actually fits your situation and budget. And it&rsquo;s <strong>free to you</strong> &mdash; I&rsquo;m paid by the insurance carriers, not by you. Same plans, same prices you&rsquo;d find on your own, but with someone in your corner who knows the terrain and will still be here if you have questions later.</p>
+        <p>You&rsquo;ve now got the foundation. If you&rsquo;d like someone to take it from here &mdash; to look at your specific situation and find your best options without the stress &mdash; that&rsquo;s exactly what I&rsquo;m here for.</p>
+
+        <div class="cta">
+            <h2>Still have questions? That&rsquo;s what I&rsquo;m here for.</h2>
+            <p>Get a free, no-pressure quote and I&rsquo;ll personally walk you through your best options &mdash; in plain English, at no cost to you.</p>
+            <a href="/#quote" class="btn">Get my free quote</a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div class="foot">
+        <div class="foot-top">
+            <a href="/" class="logo" style="font-size:19px;"><span class="logo-mark"></span> Savolle Insurance</a>
+            <div>
+                <a href="/">Home</a>
+                <a href="/#quote">Free quote</a>
+                <a href="tel:+12392491333">(239) 249-1333</a>
+            </div>
+        </div>
+        <p class="disclaimer">
+            Savolle Insurance is an independent insurance brokerage operated by a licensed insurance agent (National Producer Number: 21433622). This article is general educational information only and is not insurance, legal, tax, or financial advice; plan terms vary by carrier and state. We do not underwrite insurance; coverage is provided by the insurance carriers. Not affiliated with or endorsed by any government agency. Product availability varies by state. &copy; <span id="yr"></span> Savolle Insurance. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
