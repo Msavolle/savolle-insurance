@@ -13,6 +13,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Savolle Insurance — Health & Life Coverage, Handled for You</title>
 <meta name="description" content="A licensed broker who does the shopping for you. Compare health and life insurance plans and get coverage that fits — at no cost to you. Get free, personal help from a licensed broker.">
+<link rel="canonical" href="https://www.savolleinsurance.com/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savolle Insurance">
+<meta property="og:title" content="Savolle Insurance — Health &amp; Life Coverage, Handled for You">
+<meta property="og:description" content="A licensed broker who does the shopping for you. Compare health and life insurance plans and get coverage that fits — at no cost to you. Get free, personal help from a licensed broker.">
+<meta property="og:url" content="https://www.savolleinsurance.com/">
+<meta property="og:image" content="https://www.savolleinsurance.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savolle Insurance — health and life coverage, handled for you">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Savolle Insurance — Health &amp; Life Coverage, Handled for You">
+<meta name="twitter:description" content="A licensed broker who does the shopping for you. Compare health and life insurance plans and get coverage that fits — at no cost to you. Get free, personal help from a licensed broker.">
+<meta name="twitter:image" content="https://www.savolleinsurance.com/og-image.jpg">
+<meta name="twitter:image:alt" content="Savolle Insurance — health and life coverage, handled for you">
 
 <!-- SEO: structured data so Google understands who/where you are. Edit the fields to match
      your real details (name, phone, city, license, service areas). -->
@@ -21,6 +39,7 @@
   "@context": "https://schema.org",
   "@type": "InsuranceAgency",
   "name": "Savolle Insurance",
+  "url": "https://www.savolleinsurance.com/",
   "description": "Independent health and life insurance brokerage helping individuals and families find coverage that fits, at no cost to the client.",
   "telephone": "+1-239-249-1333",
   "email": "msavollemedahealth@gmail.com",
@@ -117,6 +136,18 @@
         transition: transform 0.15s ease, background 0.15s ease;
     }
     .nav-cta:hover { background: var(--pine-mid); transform: translateY(-1px); }
+    .nav-call {
+        display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+        color: var(--pine); background: var(--white); text-decoration: none;
+        padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 700;
+        border: 1.5px solid var(--pine);
+        transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+    .nav-call:hover { background: var(--pine); color: #fff; transform: translateY(-1px); }
+    .nav-call-short { display: none; }
+    .nav-call:focus-visible, .btn-call:focus-visible, .call-bar:focus-visible {
+        outline: 3px solid var(--gold); outline-offset: 2px;
+    }
     .nav-link { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; margin-right: 20px; transition: color 0.15s ease; }
     .nav-link:hover { color: var(--pine); }
     @media (max-width: 720px) { .nav-right .nav-link { display: none; } }
@@ -149,6 +180,15 @@
         transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
     .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 14px 32px -10px rgba(224, 160, 58, 0.75); }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn-call {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        background: var(--pine); color: #fff; text-decoration: none;
+        padding: 15px 22px; border-radius: 999px; font-size: 16px; font-weight: 700;
+        box-shadow: 0 10px 26px -12px rgba(16, 61, 44, 0.8);
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-call:hover { background: var(--pine-mid); transform: translateY(-2px); }
 
     .hero-trust { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
     .hero-trust svg { flex-shrink: 0; }
@@ -156,6 +196,7 @@
     /* ---------- form card ---------- */
     .broker-card { display: flex; align-items: center; gap: 16px; margin-top: 28px; padding: 16px 18px; background: var(--white); border: 1px solid var(--tint-line); border-radius: 14px; box-shadow: var(--shadow-soft); max-width: 430px; }
     .broker-photo { position: relative; width: 64px; height: 64px; flex-shrink: 0; }
+    .broker-photo picture { display: block; width: 64px; height: 64px; }
     .broker-photo img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; box-shadow: inset 0 0 0 2px rgba(224,160,58,0.6); }
     .broker-initials { width: 64px; height: 64px; border-radius: 50%; background: var(--pine); color: #fff; font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; letter-spacing: 1.5px; align-items: center; justify-content: center; box-shadow: inset 0 0 0 2px rgba(224,160,58,0.6); }
     .broker-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--pine); line-height: 1.1; }
@@ -280,6 +321,7 @@
     .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: center; }
     .about-photo-wrap { position: relative; display: inline-block; max-width: 360px; width: 100%; }
     .about-photo-wrap::before { content: ''; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid var(--gold); border-radius: 20px; z-index: 0; }
+    .about-photo-wrap picture { position: relative; z-index: 1; display: block; width: 100%; }
     .about-photo { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block; box-shadow: var(--shadow); }
     .about-photo-fallback { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; border-radius: 20px; background: var(--pine); color: #fff; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 84px; font-weight: 600; box-shadow: var(--shadow); }
     .about h2 { font-size: clamp(30px, 4vw, 44px); color: var(--pine); margin-bottom: 20px; }
@@ -359,12 +401,13 @@
 
     /* ---------- trust strip ---------- */
     .trust-strip-wrap { border-top: 1px solid var(--tint-line); border-bottom: 1px solid var(--tint-line); background: var(--white); }
-    .trust-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 32px 24px; }
+    .trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 32px 24px 18px; }
+    .trust-response { max-width: 680px; margin: 0 auto; padding: 0 24px 28px; text-align: center; font-size: 15px; line-height: 1.45; color: var(--pine); font-weight: 600; }
     .trust-stat { text-align: center; }
     .ts-num { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; color: var(--pine); line-height: 1; margin-bottom: 6px; }
     .ts-num.ts-stars { color: var(--gold); letter-spacing: 3px; }
     .ts-label { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
-    @media (max-width: 700px) { .trust-strip { grid-template-columns: repeat(2, 1fr); gap: 26px 12px; } }
+    @media (max-width: 700px) { .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 18px 8px; padding: 26px 8px 14px; } .ts-label { font-size: 12px; } .trust-response { font-size: 14px; padding: 0 16px 22px; } }
 
     /* ---------- hero ambient (subtle) ---------- */
     .hero-blob { position: absolute; border-radius: 50%; filter: blur(64px); opacity: 0.5; z-index: 0; pointer-events: none; }
@@ -436,6 +479,37 @@
     .sr-star:hover, .sr-star:focus { transform: scale(1.15); outline: none; }
     .sr-star.lit { color: #E0A03A; }
 
+    #quote { scroll-margin-top: 84px; }
+    .call-bar { display: none; }
+    @media (max-width: 980px) {
+        .nav-call-full { display: none; }
+        .nav-call-short { display: inline; }
+        .nav-right { gap: 10px; }
+        .nav-link { margin-right: 12px; }
+    }
+    @media (max-width: 720px) {
+        .logo { font-size: 17px; gap: 6px; }
+        .logo-mark { width: 22px; height: 22px; }
+        .nav-cta { padding: 8px 12px; font-size: 13px; }
+        .nav-call { padding: 8px 10px; font-size: 13px; }
+        .hero-actions .btn-primary, .hero-actions .btn-call { flex: 1 1 auto; }
+        .call-bar {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            position: fixed; left: 12px; right: 12px;
+            bottom: calc(10px + env(safe-area-inset-bottom));
+            z-index: 70; background: var(--pine); color: #fff; text-decoration: none;
+            font-weight: 700; font-size: 16px; padding: 14px 18px; border-radius: 999px;
+            box-shadow: 0 12px 30px -14px rgba(16, 61, 44, 0.75);
+        }
+        .call-bar.is-hidden { display: none; }
+        body { padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+    }
+    @media (max-width: 520px) {
+        .nav-in { flex-wrap: wrap; height: auto; padding-top: 8px; padding-bottom: 8px; row-gap: 8px; }
+        .nav-right { width: 100%; gap: 8px; }
+        .nav-call, .nav-cta { flex: 1; }
+    }
+
 </style>
 </head>
 <body>
@@ -448,6 +522,11 @@
             <a href="/" class="nav-link">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="/guides" class="nav-link">Guides</a>
+            <a href="tel:+12392491333" class="nav-call">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span class="nav-call-full">(239) 249-1333</span>
+                <span class="nav-call-short">Call</span>
+            </a>
             <a href="#quote" class="nav-cta">Get help today</a>
         </div>
     </div>
@@ -464,7 +543,14 @@
                 <span class="mark-word">handled<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 9 C 40 3, 120 3, 198 8" stroke="#E0A03A" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>
                 for you.</h1>
             <p class="hero-sub rise d2">You tell me what you need. I do the shopping, compare the plans across carriers, and find you coverage that actually fits your life and budget. Free to you — I&rsquo;m paid by the carriers, not by you.</p>
-            <div class="hero-cta-row rise d3">
+            <div class="hero-actions rise d3">
+                <a href="#quote" class="btn-primary">Get started</a>
+                <a href="tel:+12392491333" class="btn-call">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call (239) 249-1333
+                </a>
+            </div>
+            <div class="hero-cta-row">
                 <span class="hero-trust">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.5-3 8-7 11-4-3-7-6.5-7-11V5l7-3z" stroke="#2F6B4E" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#2F6B4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Licensed &amp; independent
@@ -481,7 +567,10 @@
                  Until then, your initials show instead so nothing looks broken. -->
             <div class="broker-card rise d3">
                 <div class="broker-photo">
-                    <img src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                    <picture>
+                        <source srcset="marc-photo-64.webp" type="image/webp">
+                        <img src="marc-photo-64.jpg" alt="Marc Savolle, licensed health and life insurance broker" width="64" height="64" decoding="async" fetchpriority="low" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{var p=this.closest('.broker-photo'); if(p){var f=p.querySelector('.broker-initials'); if(f) f.style.display='flex';} var pic=this.closest('picture'); if(pic) pic.style.display='none';}">
+                    </picture>
                     <div class="broker-initials" style="display:none;">MS</div>
                 </div>
                 <div class="broker-info">
@@ -497,16 +586,15 @@
             <div id="form-live">
                 <h3>Get free, personal help</h3>
                 <div id="quote-intro">
-                    <p class="fc-sub">Answer 5 quick questions (about 30 seconds). Then <strong>I personally reach out</strong> &mdash; usually within a few hours &mdash; to walk you through your best options. This isn&rsquo;t an instant online price; it&rsquo;s a real person doing the shopping for you. Free, and no obligation.</p>
+                    <p class="fc-sub">Answer 5 quick questions (about 30 seconds). A licensed agent will reach out soon, usually the same business day, to walk you through your best options. This isn&rsquo;t an instant online price; it&rsquo;s a real person doing the shopping for you. Free, and no obligation.</p>
                     <div class="privacy-badge">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#103D2C" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#103D2C" stroke-width="1.7"/><circle cx="12" cy="15.5" r="1.4" fill="#E0A03A"/></svg>
                         <span><b>Your info stays with me.</b> I never sell it or hand it to other agents &mdash; so you won&rsquo;t get bombarded with calls from other insurance companies.</span>
                     </div>
-                    <button type="button" class="btn-next start-btn" onclick="startQuote()">Get started</button>
-                    <p class="form-foot" style="margin-top:12px;">Free &amp; no obligation &middot; I&rsquo;ll personally call or text you with your options</p>
+                    <p class="form-foot" style="margin-top:0;">Free &amp; no obligation &middot; I&rsquo;ll personally call or text you with your options</p>
                 </div>
 
-                <form id="lead-form" novalidate style="display:none;">
+                <form id="lead-form" novalidate>
                     <div class="steps-bar"><span class="sb-fill" id="sb-fill"></span></div>
                     <div class="steps-count" id="steps-count">Step 1 of 5</div>
 
@@ -614,18 +702,19 @@
 </header>
 
 <!-- ============ TRUST STRIP ============
-     These four are all TRUE and safe to show:
-     - "15+ carriers" is your real appointment count
-     - "$0 cost to you" is true (you're paid by carriers)
-     - "Under 10 min response" — adjust the number to whatever you'll HONESTLY hit
-       (under 15 min, same day, etc.). Only claim what's true.
-     - "100% independent" is true (you're not captive to one carrier)
+     These are safe to show as written:
+     - "15+ carriers" is the real appointment count
+     - "$0 cost to you" stays as written (carrier-paid help; premiums still exist — do not reword here)
+     - "100% independent" is true (not captive to one carrier)
+     Response time is NOT a minute count. The same neutral line is used in the form
+     and under these stats: "A licensed agent will reach out soon, usually the same
+     business day." Marc must confirm that wording. Do not put a minute guarantee back.
      Removed the "families helped" count and star rating until you can back them with
      real numbers and real Google reviews. Add them back then. -->
 <section class="trust-strip-wrap">
     <div class="wrap trust-strip">
         <div class="trust-stat">
-            <div class="ts-num"><span data-count="15" data-suffix="+">0</span></div>
+            <div class="ts-num"><span data-count="15" data-suffix="+">15+</span></div>
             <div class="ts-label">Insurance carriers</div>
         </div>
         <div class="trust-stat">
@@ -633,14 +722,11 @@
             <div class="ts-label">Cost to you, ever</div>
         </div>
         <div class="trust-stat">
-            <div class="ts-num">Under <span data-count="10">0</span> min</div>
-            <div class="ts-label">Typical response</div>
-        </div>
-        <div class="trust-stat">
-            <div class="ts-num"><span data-count="100" data-suffix="%">0</span></div>
+            <div class="ts-num"><span data-count="100" data-suffix="%">100%</span></div>
             <div class="ts-label">Independent</div>
         </div>
     </div>
+    <p class="trust-response">A licensed agent will reach out soon, usually the same business day.</p>
 </section>
 
 <!-- ============ ABOUT / MEET MARC ============ -->
@@ -648,7 +734,10 @@
     <div class="wrap about-grid">
         <div>
             <div class="about-photo-wrap">
-                <img class="about-photo" src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                <picture>
+                    <source srcset="marc-photo.webp" type="image/webp">
+                    <img class="about-photo" src="marc-photo.jpg" alt="Marc Savolle, licensed health and life insurance broker" width="1023" height="1537" loading="lazy" decoding="async" fetchpriority="low" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='marc-photo.png';}else{var w=this.closest('.about-photo-wrap'); if(w){var f=w.querySelector('.about-photo-fallback'); if(f) f.style.display='flex';} var pic=this.closest('picture'); if(pic) pic.style.display='none';}">
+                </picture>
                 <div class="about-photo-fallback" style="display:none;">MS</div>
             </div>
         </div>
@@ -869,13 +958,9 @@
     }
     function stepGo(n) { showStep(n); }
     function startQuote() {
-        var intro = document.getElementById('quote-intro');
-        var form = document.getElementById('lead-form');
-        if (intro && intro.style.display !== 'none') {
-            intro.style.display = 'none';
-            if (form) form.style.display = 'block';
-            showStep(1);
-        }
+        var lead = document.getElementById('lead-form');
+        if (lead && lead.style.display === 'none') lead.style.display = 'block';
+        if (!currentStep) showStep(1);
     }
     function stepNext(fromStep) {
         if (fromStep === 2) {
@@ -1107,6 +1192,46 @@ function goToQuote() {
         s.addEventListener('click', go);
     });
     if (box) box.addEventListener('mouseleave', function(){ lightUp(0); });
+})();
+</script>
+
+<a class="call-bar is-hidden" href="tel:+12392491333">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    Call (239) 249-1333
+</a>
+<script>
+(function () {
+    var bar = document.querySelector('.call-bar');
+    if (!bar) return;
+    var mq = window.matchMedia('(max-width: 720px)');
+    var blocked = new Set();
+    var nodes = [document.getElementById('quote'), document.querySelector('footer')].filter(Boolean);
+    function overlaps(el) {
+        var rect = el.getBoundingClientRect();
+        return rect.top < (window.innerHeight + 80) && rect.bottom > 0;
+    }
+    function sync() {
+        var show = mq.matches && blocked.size === 0;
+        bar.classList.toggle('is-hidden', !show);
+        bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+    nodes.forEach(function (node) { if (overlaps(node)) blocked.add(node); });
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) blocked.add(entry.target);
+                else blocked.delete(entry.target);
+            });
+            sync();
+        }, { root: null, rootMargin: '0px 0px 80px 0px', threshold: 0 });
+        nodes.forEach(function (node) { io.observe(node); });
+    } else if (document.getElementById('quote')) {
+        blocked.add(document.getElementById('quote'));
+    }
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else if (mq.addListener) mq.addListener(sync);
+    window.addEventListener('resize', sync);
+    sync();
 })();
 </script>
 </body>
